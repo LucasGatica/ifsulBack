@@ -1,14 +1,22 @@
 package com.ifsul.innovators.model;
 
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Entity
 public class Curriculo {
 
-    private String idCurriculo;
-    private String idUsuario;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idCurriculo;
+    @OneToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
+    @ElementCollection
     private List<String> listaSkills;
-    private List<String> listaIdsExperiencias;
+    @OneToMany(mappedBy = "curriculo", cascade = CascadeType.ALL)
+    private List<Experiencia> experiencias;
     private LocalDateTime dataCriacao;
     private LocalDateTime dataAtualizacao;
 }
