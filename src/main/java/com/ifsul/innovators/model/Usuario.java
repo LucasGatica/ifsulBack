@@ -4,8 +4,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import com.ifsul.innovators.enums.UsuarioTipo;
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Data
 public class Usuario {
 
     @Id
