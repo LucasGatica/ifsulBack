@@ -5,10 +5,14 @@ import java.util.List;
 import com.ifsul.innovators.enums.UsuarioTipo;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
 
 @Entity
 @Data
-public class Usuario {
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,13 +22,12 @@ public class Usuario {
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private Curriculo curriculo;
 
-    // Projetos criados pelo usuário (autor)
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL)
     private List<Projeto> projetosCriados;
 
-    // Projetos em que o usuário é membro
     @ManyToMany(mappedBy = "membros")
     private List<Projeto> projetosParticipados;
+
     @Enumerated(EnumType.STRING)
     private UsuarioTipo usuarioTipo;
     private String matricula;
@@ -32,4 +35,39 @@ public class Usuario {
     private String senha;
     private LocalDateTime dataCriacao;
     private LocalDateTime dataAtualizacao;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
+
+    @Override
+    public String getPassword() {
+        return senha;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

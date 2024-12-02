@@ -3,6 +3,7 @@ package com.ifsul.innovators.service;
 import com.ifsul.innovators.model.Usuario;
 import com.ifsul.innovators.repository.UsuarioRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +12,10 @@ import java.util.List;
 @AllArgsConstructor
 public class UsuarioService {
     private UsuarioRepository usuarioRepository;
+    private PasswordEncoder passwordEncoder;
 
     public Usuario salvarUsuario(Usuario usuario) {
+        usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
         return usuarioRepository.save(usuario);
     }
 
