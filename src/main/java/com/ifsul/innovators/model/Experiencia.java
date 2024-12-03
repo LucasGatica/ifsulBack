@@ -2,8 +2,11 @@ package com.ifsul.innovators.model;
 
 import com.ifsul.innovators.enums.ExperienciaTipo;
 import jakarta.persistence.*;
+import lombok.Data;
+
 
 @Entity
+@Data
 public class Experiencia {
 
     @Id
