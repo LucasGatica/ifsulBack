@@ -2,9 +2,12 @@ package com.ifsul.innovators.model;
 
 import com.ifsul.innovators.enums.StatusTipo;
 import jakarta.persistence.*;
+import lombok.Data;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Data
 @Entity
 public class Projeto {
 
