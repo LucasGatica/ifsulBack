@@ -1,4 +1,5 @@
 package com.ifsul.innovators.service;
+import com.ifsul.innovators.enums.StatusTipo;
 import com.ifsul.innovators.model.Projeto;
 import com.ifsul.innovators.model.Usuario;
 import com.ifsul.innovators.repository.ProjetoRepository;
@@ -22,7 +23,12 @@ public class ProjetoService {
 
     public Optional<Projeto> findById(Long id) { return projetoRepository.findById(id);
     }
-    public void delete(Long id) {
+
+    public List<Projeto> findByStatusTipo(StatusTipo statusTipo) {
+        return projetoRepository.findByStatusTipo(statusTipo).orElse(null);
+    }
+
+        public void delete(Long id) {
         Projeto projetoParaExcluir = projetoRepository.findById(id)
                 .orElseThrow();
         projetoRepository.delete(projetoParaExcluir);

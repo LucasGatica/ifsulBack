@@ -1,5 +1,6 @@
 package com.ifsul.innovators.controller;
 
+import com.ifsul.innovators.enums.StatusTipo;
 import com.ifsul.innovators.model.Projeto;
 import com.ifsul.innovators.service.ProjetoService;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,10 @@ public class ProjetoController {
 
     @GetMapping("/{id}")
     public Optional<Projeto> buscarProjetoPorId(@PathVariable Long id) {return projetoService.findById(id);}
+
+    @GetMapping("/status/{statusTipo}")
+    public List<Projeto> buscarProjetoPorId(@PathVariable StatusTipo statusTipo) {
+        return projetoService.findByStatusTipo(statusTipo);}
 
     @DeleteMapping("/{id}")
     public void removerProjeto(@PathVariable Long id) {projetoService.delete(id);}

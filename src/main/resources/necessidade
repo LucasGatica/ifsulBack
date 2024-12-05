@@ -1,0 +1,22 @@
+{
+  "nome": "Projeto em ANDAMENTO",
+  "descricao": "Um projeto focado em soluções tecnológicas inovadoras.",
+  "autor": null,
+  "membros": null,
+  "necessidades": [
+    {
+
+      "titulo": "Desenvolvedor Full Stack",
+      "descricao": "Procuramos um desenvolvedor com experiência em Java e React.",
+      "qtdVagas": 3,
+      "curriculosRecebidos": null,
+      "curriculosAceitos": null,
+      "curriculosRecusados": null,
+      "necessidadeAtiva": true
+    }
+  ],
+  "dataCriacao": "2024-12-01T10:00:00",
+  "dataAtualizacao": "2024-12-03T15:00:00",
+  "dataEstimadaTermino": "2025-06-01T00:00:00",
+  "statusTipo": "ANDAMENTO"
+}
